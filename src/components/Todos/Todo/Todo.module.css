@@ -1,0 +1,33 @@
+.Todo {
+    display: flex;
+    align-items: center;
+    padding: .5rem 1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+}
+.Checkbox {
+    margin-right: 1rem;
+}
+.Text {
+    color: #555;
+    cursor: pointer;
+}
+.Remove {
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    opacity: 0;
+}

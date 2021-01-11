@@ -1,0 +1,11 @@
+.Header {
+    background-color: var(--color-primary);
+    padding: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.418);
+}
+.Logo {
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+}

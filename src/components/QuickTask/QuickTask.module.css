@@ -1,0 +1,33 @@
+.Form {
+  width: 100%;
+  background-color: var(--color-primary);
+  padding: 1rem;
+}
+.FormGroup {
+  display: flex;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.Input {
+  width: 100%;
+  margin-right: 1rem;
+  padding: 0.7rem 1rem;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  border-bottom: 1px solid #ececec;
+}
+.Input::placeholder {
+  color: #f4f4f4;
+}
+.Button {
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
