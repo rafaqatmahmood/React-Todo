@@ -2,14 +2,8 @@ import React from "react";
 import Classes from "./Todo.module.css";
 
 const Todo = (props) => {
-  let Class = "";
-
-  if (props.animate) {
-    Class = Classes.Remove;
-  }
-  console.log(props.animate);
   return (
-    <div className={`${Classes.Todo} ${Class}`}>
+    <div className={`${Classes.Todo} ${props.animate ? Classes.Remove : ""}`}>
       <input
         onClick={props.checkClicked}
         className={Classes.Checkbox}
