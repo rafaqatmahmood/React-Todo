@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import Todo from "./Todo/Todo";
 import Classes from "./Todos.module.css";
 import { TodosContext } from "../../context/TodosContext";
+import Img from "../../assets/images/Nothing to do.png";
 
 const Todos = (props) => {
   const [todos, setTodos] = useContext(TodosContext);
@@ -35,7 +36,10 @@ const Todos = (props) => {
           })}
         </div>
       ) : (
-        <h2 className={Classes.Heading}>Nothing to do</h2>
+        <div className={Classes.Center}>
+          <img className={Classes.Image} src={Img} alt='img not found!'/>
+          <h2 className={Classes.Heading}>Nothing to do</h2>
+        </div>
       )}
       {/* <h2 className={Classes.Heading}>Nothing to do</h2> */}
     </div>
