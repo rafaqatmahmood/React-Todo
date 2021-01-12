@@ -16,7 +16,7 @@ const App = () => {
       id: new Date().getTime().toString(),
       animate: false,
     };
-    setTodos([data, ...todos]);
+    if (input.length > 0) setTodos([data, ...todos]);
     setInput("");
   };
   const removeTodo = (id, index) => {
@@ -36,7 +36,7 @@ const App = () => {
         changed={(e) => setInput(e.target.value)}
         value={input}
       />
-      {/*<CreateTodo />*/}
+      {/* <CreateTodo /> */}
     </div>
   );
 };
