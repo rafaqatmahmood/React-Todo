@@ -1,0 +1,27 @@
+.Button {
+  width: 50px;
+  height: 50px;
+  border: none;
+  color: #fff;
+  outline: none;
+  background-color: var(--color-primary);
+  position: absolute;
+  bottom: 6rem;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 3rem;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s;
+}
+.Button:hover,
+.Button:active {
+    background-color: var(--color-primary-dark);
+}

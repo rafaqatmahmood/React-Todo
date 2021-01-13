@@ -21,26 +21,28 @@ const Todos = (props) => {
 
   return (
     <div className={Classes.Todos}>
-      {todos.length > 0 ? (
-        <div className="row">
-          {todos.map((val, index) => {
-            return (
-              <Todo
-                key={val.id}
-                index={index}
-                text={val.text}
-                checkClicked={() => removeTodo(val.id, index)}
-                animate={val.animate}
-              />
-            );
-          })}
-        </div>
-      ) : (
-        <div className={Classes.Center}>
-          <img className={Classes.Image} src={Img} alt='img not found!'/>
-          <h2 className={Classes.Heading}>Nothing to do</h2>
-        </div>
-      )}
+      <div className="row">
+        {todos.map((val, index) => {
+          return (
+            <Todo
+              key={val.id}
+              index={index}
+              text={val.text}
+              checkClicked={() => removeTodo(val.id, index)}
+              animate={val.animate}
+              date={val.date}
+            />
+          );
+        })}
+      </div>
+
+      <div
+        className={Classes.Center}
+        style={{ opacity: todos.length > 0 ? "0" : "1" }}
+      >
+        <img className={Classes.Image} src={Img} alt="img not found!" />
+        <h2 className={Classes.Heading}>Nothing to do</h2>
+      </div>
       {/* <h2 className={Classes.Heading}>Nothing to do</h2> */}
     </div>
   );

@@ -1,0 +1,33 @@
+.CreateTodo {
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff;
+    z-index: 9999;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+}
+.Form {
+    padding: 4rem 0;
+}
+.Form * {
+    font-family: inherit;
+}
+.Group {
+    margin-bottom: 2rem;
+}
+.Label {
+    color: var(--color-primary);
+    display: block;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+.Input {
+    outline: none;
+    border: 1px solid rgb(214, 214, 214);
+    padding: .7rem 1rem;
+    width: 100%;
+}

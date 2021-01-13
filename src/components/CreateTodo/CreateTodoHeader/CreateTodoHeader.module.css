@@ -1,0 +1,27 @@
+.Left {
+    display: flex;
+    margin-right: auto;
+}
+.Left div {
+    margin-right: 2rem;
+}
+.Cancel {
+    cursor: pointer;
+}
+.Cancel:hover,
+.Cancel:active {
+    text-decoration: underline;
+}
+.HeaderRow {
+    display: flex;
+    color: #fff;
+    align-items: center;
+}
+.Tick {
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #fff;
+}

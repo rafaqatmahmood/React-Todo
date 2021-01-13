@@ -1,5 +1,6 @@
 :root {
   --color-primary: #3498db;
+  --color-primary-dark: #1f87cc;
 }
 
 *,*::after,*::before {

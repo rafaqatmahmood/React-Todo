@@ -11,6 +11,7 @@ const QuickTask = (props) => {
       text: input,
       id: new Date().getTime().toString(),
       animate: false,
+      date: ''
     };
     if (input.length > 0) setTodos([data, ...todos]);
     setInput("");
