@@ -11,7 +11,7 @@
     -o-transition: 0.4s;
 }
 .Form {
-    padding: 4rem 0;
+    padding: 4rem 1rem;
 }
 .Form * {
     font-family: inherit;

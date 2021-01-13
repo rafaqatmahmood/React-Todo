@@ -9,7 +9,9 @@ const Todo = (props) => {
         className={Classes.Checkbox}
         type="checkbox"
       />
-      <p className={Classes.Text}>{props.text}</p>
+      <p className={Classes.Text}>
+        <span>{props.text}</span> <strong>{props.date}</strong>
+      </p>
     </div>
   );
 };
