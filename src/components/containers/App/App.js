@@ -7,6 +7,7 @@ import CreateTodo from "../../CreateTodo/CreateTodo";
 import { TodosProvider } from "../../../context/TodosContext";
 import { CreateTodoProvider } from "../../../context/CreateTodoContext";
 import AddButton from "../../UI/AddButton/AddButton";
+import { EditingProvider } from "../../../context/EditingContext";
 
 const App = () => {
   return (
@@ -14,9 +15,11 @@ const App = () => {
       <CreateTodoProvider>
         <div className={Classes.App}>
           <AppHeader />
-          <Todos />
+          <EditingProvider>
+            <Todos />
+            <CreateTodo />
+          </EditingProvider>
           <QuickTask />
-          <CreateTodo />
           <AddButton />
         </div>
       </CreateTodoProvider>

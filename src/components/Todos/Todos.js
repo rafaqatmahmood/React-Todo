@@ -26,6 +26,7 @@ const Todos = (props) => {
           return (
             <Todo
               key={val.id}
+              id={val.id}
               index={index}
               text={val.text}
               checkClicked={() => removeTodo(val.id, index)}

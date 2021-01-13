@@ -7,11 +7,15 @@ const CreateTodoHeader = (props) => {
     <Header>
       <div className={Classes.HeaderRow}>
         <div className={Classes.Left}>
-          <div className={Classes.Cancel} onClick={props.cancel}>cancel</div>
+          <div className={Classes.Cancel} onClick={props.cancel}>
+            cancel
+          </div>
           <div>New Task</div>
         </div>
         <div className={Classes.Right}>
-          <button className={Classes.Tick} onClick={props.create}>✓</button>
+          <button className={Classes.Tick} onClick={props.create}>
+            <i className="fa fa-check" aria-hidden="true"></i>
+          </button>
         </div>
         <div className="right"></div>
       </div>
