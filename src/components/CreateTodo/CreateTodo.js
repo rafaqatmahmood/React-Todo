@@ -45,6 +45,8 @@ const CreateTodo = () => {
       const Edit = { ...editInfo };
       Edit.isEditing = false;
       setEditInfo(Edit);
+      setText('')
+      setDate('')
     }
   };
 
@@ -62,7 +64,10 @@ const CreateTodo = () => {
         create={CreateTodo}
       />
       <div className="row">
-        <form className={Classes.Form}>
+        <form className={Classes.Form} onSubmit={(e)=>{
+          e.preventDefault()
+          CreateTodo()
+        }}>
           <div className={Classes.Group}>
             <label htmlFor="Task" className={Classes.Label}>
               What is to be done?
