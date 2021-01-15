@@ -1,45 +1,70 @@
 import React, { useContext } from "react";
 import Todo from "./Todo/Todo";
 import Classes from "./Todos.module.css";
-import Img from "../../assets/images/Nothing to do.png";
+import Nothing from "../UI/Nothing/Nothing";
 import { Context } from "../../context/Store";
 
 const Todos = () => {
   const [state, dispatch] = useContext(Context);
   const removeTodo = (id, index) => {
-    const Todos = [...state.todos];
-    Todos[index].animate = true;
-    // setTodos(Todos);
-    dispatch({ type: "animate_todo", payload: Todos });
-    setTimeout(() => dispatch({ type: "remove_todo", payload: id }), 400);
+    setTimeout(() => {
+      const Todos = [...state.todos];
+      Todos[index].animate = true;
+      dispatch({ type: "animate_todo", payload: Todos });
+      setTimeout(() => dispatch({ type: "remove_todo", payload: id }), 400);
+      let item = state.todos.find((val) => val.id === id);
+      item = { ...item, animate: false, id: new Date().getTime().toString() };
+      dispatch({ type: "add_completed", payload: item });
+    }, 200);
   };
+  const removeCompleted = (id, index) => {
+    setTimeout(() => {
+      const Todos = [...state.completed];
+      Todos[index].animate = true;
+      dispatch({ type: "set_completed", payload: Todos });
+      setTimeout(
+        () => dispatch({ type: "remove_completed", payload: id }),
+        400
+      );
+    }, 200);
+  };
+  let content = <Nothing heading="Nothing to do" />;
+
+  if (state.showTodo && state.todos.length > 0) {
+    content = state.todos.map((val, index) => {
+      return (
+        <Todo
+          key={val.id}
+          id={val.id}
+          index={index}
+          text={val.text}
+          checkClicked={() => removeTodo(val.id, index)}
+          animate={val.animate}
+          date={val.date}
+        />
+      );
+    });
+  } else if (!state.showTodo && state.completed.length > 0) {
+    content = state.completed.map((val, index) => {
+      return (
+        <Todo
+          key={val.id}
+          id={val.id}
+          index={index}
+          text={val.text}
+          checkClicked={() => removeCompleted(val.id, index)}
+          animate={val.animate}
+          date={val.date}
+        />
+      );
+    });
+  } else if (!state.showTodo && !state.completed.length > 0) {
+    content = <Nothing heading="Nothing in Completed" />;
+  }
 
   return (
     <div className={Classes.Todos}>
-      <div className="row">
-        {state.todos.map((val, index) => {
-          return (
-            <Todo
-              key={val.id}
-              id={val.id}
-              index={index}
-              text={val.text}
-              checkClicked={() => removeTodo(val.id, index)}
-              animate={val.animate}
-              date={val.date}
-            />
-          );
-        })}
-      </div>
-
-      <div
-        className={Classes.Center}
-        style={{ opacity: state.todos.length > 0 ? "0" : "1" }}
-      >
-        <img className={Classes.Image} src={Img} alt="img not found!" />
-        <h2 className={Classes.Heading}>Nothing to do</h2>
-      </div>
-      {/* <h2 className={Classes.Heading}>Nothing to do</h2> */}
+      <div className="row">{content}</div>
     </div>
   );
 };

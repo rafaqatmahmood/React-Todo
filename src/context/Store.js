@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
 
 const initialState = {
@@ -11,12 +11,19 @@ const initialState = {
     editDate: "",
     editID: "",
   },
+  completed: [],
+  showTodo: true,
+  showDropDown: false,
 };
 
 export const Context = createContext();
 
 export const Store = (props) => {
   const [state, depatch] = useReducer(Reducer, initialState);
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   return (
     <Context.Provider value={[state, depatch]}>
