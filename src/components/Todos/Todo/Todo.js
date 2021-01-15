@@ -1,9 +1,9 @@
-import React, { useContext,useEffect } from "react";
+import React, { useContext } from "react";
 import Classes from "./Todo.module.css";
 import { EditingContext } from "../../../context/EditingContext";
 
 const Todo = (props) => {
-  const [editInfo, setEditInfo] = useContext(EditingContext);
+  const [, setEditInfo] = useContext(EditingContext);
 
   const handleClick = () => {
     setEditInfo({
@@ -14,10 +14,6 @@ const Todo = (props) => {
       editID: props.id,
     });
   };
-
-  useEffect(() => {
-    setEditInfo(editInfo)
-  })
 
   return (
     <div className={`${Classes.Todo} ${props.animate ? Classes.Remove : ""}`}>

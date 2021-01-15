@@ -1,14 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Classes from "./AddButton.module.css";
-import { CreateTodoContext } from "../../../context/CreateTodoContext";
+import { Context } from "../../../context/Store";
 
 const AddButton = (props) => {
-  const [isCreating, setIsCreating] = useContext(CreateTodoContext);
-  useEffect(() => {
-    setIsCreating(isCreating);
-  });
+  const [, dispatch] = useContext(Context);
   return (
-    <button className={Classes.Button} onClick={() => setIsCreating(true)}>
+    <button
+      className={Classes.Button}
+      onClick={() => dispatch({ type: "is_creating", payload: true })}
+    >
       +
     </button>
   );
