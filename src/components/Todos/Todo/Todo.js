@@ -1,23 +1,22 @@
-import React, { useContext,useEffect } from "react";
+import React, { useContext } from "react";
 import Classes from "./Todo.module.css";
-import { EditingContext } from "../../../context/EditingContext";
+import { Context } from "../../../context/Store";
 
 const Todo = (props) => {
-  const [editInfo, setEditInfo] = useContext(EditingContext);
+  const [, dispatch] = useContext(Context);
 
   const handleClick = () => {
-    setEditInfo({
-      isEditing: true,
-      editIndex: props.index,
-      editText: props.text,
-      editDate: props.date,
-      editID: props.id,
+    dispatch({
+      type: "edit_info",
+      payload: {
+        isEditing: true,
+        editIndex: props.index,
+        editText: props.text,
+        editDate: props.date,
+        editID: props.id,
+      },
     });
   };
-
-  useEffect(() => {
-    setEditInfo(editInfo)
-  })
 
   return (
     <div className={`${Classes.Todo} ${props.animate ? Classes.Remove : ""}`}>

@@ -1,19 +1,21 @@
 import React, { useState, useContext } from "react";
 import Classes from "./QuickTask.module.css";
-import { TodosContext } from "../../context/TodosContext";
+// import { TodosContext } from "../../context/TodosContext";
+import { Context } from "../../context/Store";
 
 const QuickTask = (props) => {
+  const [, dispatch] = useContext(Context);
   const [input, setInput] = useState("");
-  const [todos, setTodos] = useContext(TodosContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
       text: input,
       id: new Date().getTime().toString(),
       animate: false,
-      date: ''
+      date: "",
     };
-    if (input.length > 0) setTodos([data, ...todos]);
+    if (input.length > 0) dispatch({ type: "create_todo", payload: data });
+
     setInput("");
   };
   return (
