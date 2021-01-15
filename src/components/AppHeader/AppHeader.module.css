@@ -1,6 +1,55 @@
 .Logo {
-    font-size: 2rem;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+}
+.HeaderRow {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.DropDown {
+  position: relative;
+  width: 10rem;
+  text-align: right;
+}
+.DropDown .Form {
+  width: 100%;
+  color: #fff;
+  background-color: var(--color-primary);
+  position: absolute;
+  top: 4.5rem;
+  left: 1rem;
+  z-index: 9999;
+}
+.Radio {
+  display: none;
+}
+.Button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 3rem;
+  cursor: pointer;
+}
+.Label {
+  padding: 1rem;
+  width: 100%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s;
+}
+.Radio:checked ~ .Label {
+  background-color: var(--color-primary-dark);
+}
+.Label:active,
+.Label:hover {
+  background-color: var(--color-primary-dark);
 }

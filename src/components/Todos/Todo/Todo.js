@@ -3,19 +3,21 @@ import Classes from "./Todo.module.css";
 import { Context } from "../../../context/Store";
 
 const Todo = (props) => {
-  const [, dispatch] = useContext(Context);
+  const [state, dispatch] = useContext(Context);
 
   const handleClick = () => {
-    dispatch({
-      type: "edit_info",
-      payload: {
-        isEditing: true,
-        editIndex: props.index,
-        editText: props.text,
-        editDate: props.date,
-        editID: props.id,
-      },
-    });
+    if (state.showTodo) {
+      dispatch({
+        type: "edit_info",
+        payload: {
+          isEditing: true,
+          editIndex: props.index,
+          editText: props.text,
+          editDate: props.date,
+          editID: props.id,
+        },
+      });
+    }
   };
 
   return (

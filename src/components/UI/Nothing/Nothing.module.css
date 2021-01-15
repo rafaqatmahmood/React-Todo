@@ -1,0 +1,30 @@
+.Heading {
+  color: #333;
+}
+.Center {
+  width: 350px;
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  -webkit-transform: translate(-50%, -40%);
+  -moz-transform: translate(-50%, -40%);
+  -ms-transform: translate(-50%, -40%);
+  -o-transform: translate(-50%, -40%);
+  transition: 0.2s opacity;
+  -webkit-transition: 0.2s opacity;
+  -moz-transition: 0.2s opacity;
+  -ms-transition: 0.2s opacity;
+  -o-transition: 0.2s opacity;
+  pointer-events: none;
+}
+.Image {
+  width: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+  .Center {
+    width: 250px;
+  }
+}
