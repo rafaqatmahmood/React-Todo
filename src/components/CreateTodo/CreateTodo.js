@@ -1,25 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
 import Classes from "./CreateTodo.module.css";
 import CreateTodoHeader from "./CreateTodoHeader/CreateTodoHeader";
-// import { CreateTodoContext } from "../../context/CreateTodoContext";
-// import { TodosContext } from "../../context/TodosContext";
-import { EditingContext } from "../../context/EditingContext";
 import { Context } from "../../context/Store";
 
 const CreateTodo = () => {
-  const [editInfo, setEditInfo] = useContext(EditingContext);
-  // const [isCreating, setIsCreating] = useContext(CreateTodoContext);
-  // const [todos, setTodos] = useContext(TodosContext);
   const [state, dispatch] = useContext(Context);
   const [text, setText] = useState("");
   const [date, setDate] = useState("");
 
-  // useEffect(() => {
-  //   if (editInfo.isEditing) {
-  //     setText(editInfo.editText);
-  //     setDate(editInfo.editDate);
-  //   }
-  // }, [editInfo]);
+  useEffect(() => {
+    if (state.editInfo.isEditing) {
+      setText(state.editInfo.editText);
+      setDate(state.editInfo.editDate);
+    }
+  }, [state.editInfo]);
 
   const CreateTodo = () => {
     if (state.isCreating) {
@@ -30,45 +24,49 @@ const CreateTodo = () => {
         date: date,
       };
       dispatch({ type: "create_todo", payload: data });
-      // setTodos([data, ...todos]);
       setText("");
       setDate("");
-      // setIsCreating(false);
       dispatch({ type: "is_creating", payload: false });
-    } //else if (editInfo.isEditing) {
-    // const Todos = [...todos];
+    } else if (state.editInfo.isEditing) {
+      const Todos = [...state.todos];
 
-    // Todos[editInfo.editIndex] = {
-    //   text: text,
-    //   id: editInfo.editID,
-    //   animate: false,
-    //   date: date,
-    // };
+      Todos[state.editInfo.editIndex] = {
+        text: text,
+        id: state.editInfo.editID,
+        animate: false,
+        date: date,
+      };
 
-    // setTodos(Todos);
-    // const Edit = { ...editInfo };
-    // Edit.isEditing = false;
-    // setEditInfo(Edit);
-    // setText("");
-    // setDate("");
-    // }
+      // setTodos(Todos);
+      dispatch({ type: "set_todo", payload: Todos });
+      const Edit = { ...state.editInfo };
+      Edit.isEditing = false;
+      dispatch({ type: "edit_info", payload: Edit });
+      setText("");
+      setDate("");
+    }
   };
 
   return (
     <div
       className={Classes.CreateTodo}
       style={{
-        opacity: state.isCreating || editInfo.isEditing ? "1" : "0",
+        opacity: state.isCreating || state.editInfo.isEditing ? "1" : "0",
         transform:
-          state.isCreating || editInfo.isEditing ? "scale(1)" : "scale(0.8)",
+          state.isCreating || state.editInfo.isEditing
+            ? "scale(1)"
+            : "scale(0.8)",
         pointerEvents:
-          state.isCreating || editInfo.isEditing ? "inherit" : "none",
+          state.isCreating || state.editInfo.isEditing ? "inherit" : "none",
       }}
     >
       <CreateTodoHeader
         cancel={() => {
-          // setIsCreating(false);
-          setEditInfo(false);
+          dispatch({ type: "is_creating", payload: false });
+          dispatch({
+            type: "edit_info",
+            payload: { ...state.editInfo, isEditing: false },
+          });
         }}
         create={CreateTodo}
       />

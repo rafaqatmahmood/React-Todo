@@ -15,10 +15,20 @@ const Reducer = (state, action) => {
         ...state,
         todos: action.payload,
       };
+    case "set_todo":
+      return {
+        ...state,
+        todos: action.payload,
+      };
     case "is_creating":
       return {
         ...state,
         isCreating: action.payload,
+      };
+    case "edit_info":
+      return {
+        ...state,
+        editInfo: action.payload,
       };
     default:
       return state;

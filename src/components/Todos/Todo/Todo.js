@@ -1,17 +1,20 @@
 import React, { useContext } from "react";
 import Classes from "./Todo.module.css";
-import { EditingContext } from "../../../context/EditingContext";
+import { Context } from "../../../context/Store";
 
 const Todo = (props) => {
-  const [, setEditInfo] = useContext(EditingContext);
+  const [, dispatch] = useContext(Context);
 
   const handleClick = () => {
-    setEditInfo({
-      isEditing: true,
-      editIndex: props.index,
-      editText: props.text,
-      editDate: props.date,
-      editID: props.id,
+    dispatch({
+      type: "edit_info",
+      payload: {
+        isEditing: true,
+        editIndex: props.index,
+        editText: props.text,
+        editDate: props.date,
+        editID: props.id,
+      },
     });
   };
 
