@@ -15,11 +15,6 @@ const Reducer = (state, action) => {
         ...state,
         todos: action.payload,
       };
-    case "animate_completed":
-      return {
-        ...state,
-        completed: action.payload,
-      };
     case "set_todo":
       return {
         ...state,
@@ -49,16 +44,6 @@ const Reducer = (state, action) => {
       return {
         ...state,
         completed: action.payload,
-      };
-    case "remove_completed":
-      return {
-        ...state,
-        completed: state.completed.filter((val) => val.id !== action.payload),
-      };
-    case "toggle_dropdown":
-      return {
-        ...state,
-        showDropDown: action.payload,
       };
     default:
       return state;

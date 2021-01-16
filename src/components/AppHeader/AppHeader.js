@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import Classes from "./AppHeader.module.css";
 import Header from "../hoc/Header/Header";
 import { Context } from "../../context/Store";
 
 const AppHeader = () => {
   const [state, dispatch] = useContext(Context);
+  const [dropDown, setDropDown] = useState(false);
   return (
     <Header>
       <div className={Classes.HeaderRow}>
@@ -12,18 +13,13 @@ const AppHeader = () => {
         <div className={Classes.DropDown}>
           <button
             className={Classes.Button}
-            onClick={() =>
-              dispatch({
-                type: "toggle_dropdown",
-                payload: !state.showDropDown,
-              })
-            }
+            onClick={() => setDropDown(!dropDown)}
           >
             <i className="fa fa-angle-down" aria-hidden="true"></i>
           </button>
           <form
             className={Classes.Form}
-            style={{ display: state.showDropDown ? "block" : "none" }}
+            style={{ display: dropDown ? "block" : "none" }}
           >
             <div className={Classes.Group}>
               <input
@@ -51,6 +47,22 @@ const AppHeader = () => {
               />
               <label className={Classes.Label} htmlFor="completed">
                 Completed
+              </label>
+            </div>
+            <div className={Classes.Group}>
+              <input
+                onChange={() =>
+                  dispatch({ type: "set_completed", payload: [] })
+                }
+                // checked={!state.showTodo}
+                className={Classes.Radio}
+                id="remove-completed"
+                value="input"
+                type="radio"
+                name="tab"
+              />
+              <label className={Classes.Label} htmlFor="remove-completed">
+                Remove Completed
               </label>
             </div>
           </form>

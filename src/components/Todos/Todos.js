@@ -17,17 +17,17 @@ const Todos = () => {
       dispatch({ type: "add_completed", payload: item });
     }, 200);
   };
-  const removeCompleted = (id, index) => {
-    setTimeout(() => {
-      const Todos = [...state.completed];
-      Todos[index].animate = true;
-      dispatch({ type: "set_completed", payload: Todos });
-      setTimeout(
-        () => dispatch({ type: "remove_completed", payload: id }),
-        400
-      );
-    }, 200);
-  };
+  // const removeCompleted = (id, index) => {
+  //   setTimeout(() => {
+  //     const Todos = [...state.completed];
+  //     Todos[index].animate = true;
+  //     dispatch({ type: "set_completed", payload: Todos });
+  //     setTimeout(
+  //       () => dispatch({ type: "remove_completed", payload: id }),
+  //       400
+  //     );
+  //   }, 200);
+  // };
   let content = <Nothing heading="Nothing to do" />;
 
   if (state.showTodo && state.todos.length > 0) {
@@ -52,9 +52,10 @@ const Todos = () => {
           id={val.id}
           index={index}
           text={val.text}
-          checkClicked={() => removeCompleted(val.id, index)}
+          // checkClicked={() => removeCompleted(val.id, index)}
           animate={val.animate}
           date={val.date}
+          checked={true}
         />
       );
     });
