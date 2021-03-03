@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import Classes from "./QuickTask.module.css";
-// import { TodosContext } from "../../context/TodosContext";
 import { Context } from "../../context/Store";
 
 const QuickTask = (props) => {
   const [, dispatch] = useContext(Context);
   const [input, setInput] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -14,8 +14,9 @@ const QuickTask = (props) => {
       animate: false,
       date: "",
     };
-    if (input.length > 0) dispatch({ type: "create_todo", payload: data });
-
+    if (input.length > 0) {
+      dispatch({ type: "create_todo", payload: data });
+    }
     setInput("");
   };
   return (

@@ -37,6 +37,7 @@ const CreateTodo = () => {
         date: date,
       };
 
+      dispatch({ type: "is_creating", payload: false });
       // setTodos(Todos);
       dispatch({ type: "set_todo", payload: Todos });
       const Edit = { ...state.editInfo };
