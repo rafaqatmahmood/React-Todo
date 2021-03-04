@@ -26,7 +26,6 @@ const CreateTodo = () => {
       dispatch({ type: "create_todo", payload: data });
       setText("");
       setDate("");
-      dispatch({ type: "is_creating", payload: false });
     } else if (state.editInfo.isEditing) {
       const Todos = [...state.todos];
 
@@ -37,12 +36,7 @@ const CreateTodo = () => {
         date: date,
       };
 
-      dispatch({ type: "is_creating", payload: false });
-      // setTodos(Todos);
-      dispatch({ type: "set_todo", payload: Todos });
-      const Edit = { ...state.editInfo };
-      Edit.isEditing = false;
-      dispatch({ type: "edit_info", payload: Edit });
+      dispatch({ type: "update_todo", payload: Todos });
       setText("");
       setDate("");
     }

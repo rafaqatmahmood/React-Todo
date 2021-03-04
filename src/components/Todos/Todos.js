@@ -10,7 +10,7 @@ const Todos = () => {
     setTimeout(() => {
       const Todos = [...state.todos];
       Todos[index].animate = true;
-      dispatch({ type: "animate_todo", payload: Todos });
+      dispatch({ type: "update_todo", payload: Todos });
       setTimeout(() => dispatch({ type: "remove_todo", payload: id }), 400);
       let item = state.todos.find((val) => val.id === id);
       item = { ...item, animate: false, id: new Date().getTime().toString() };

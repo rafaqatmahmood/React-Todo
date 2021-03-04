@@ -4,21 +4,19 @@ const Reducer = (state, action) => {
       return {
         ...state,
         todos: state.todos.concat(action.payload),
+        isCreating: false,
       };
     case "remove_todo":
       return {
         ...state,
         todos: state.todos.filter((val) => val.id !== action.payload),
       };
-    case "animate_todo":
+    case "update_todo":
       return {
         ...state,
         todos: action.payload,
-      };
-    case "set_todo":
-      return {
-        ...state,
-        todos: action.payload,
+        isCreating: false,
+        editInfo: state.editInfo.isEditing = false
       };
     case "is_creating":
       return {
