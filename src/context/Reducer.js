@@ -16,7 +16,7 @@ const Reducer = (state, action) => {
         ...state,
         todos: action.payload,
         isCreating: false,
-        editInfo: state.editInfo.isEditing = false
+        editInfo: { ...state.editInfo, isEditing: false },
       };
     case "is_creating":
       return {
