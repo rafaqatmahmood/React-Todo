@@ -1,4 +1,4 @@
-live at: https://rafaqatmahmood.github.io/Todo-List-in-React/
+live at: https://rafaqatmahmood.github.io/React-Todo/
 
 # Getting Started with Create React App
 
